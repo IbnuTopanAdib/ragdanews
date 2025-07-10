@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ragdanews/style/colors/app_colors.dart';
+import 'package:ragdanews/style/typography/app_text_styles.dart';
 
 class HeaderLogin extends StatelessWidget {
   const HeaderLogin({super.key});
@@ -6,7 +8,7 @@ class HeaderLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 211,
       child: Stack(
         children: [
           SizedBox(
@@ -18,33 +20,29 @@ class HeaderLogin extends StatelessWidget {
             ),
           ),
           Opacity(
-            opacity: 0.5,
+            opacity: 0.9,
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              color: Theme.of(context).colorScheme.primary,
+              color: AppColors.naplesBlue500.color,
             ),
           ),
           Positioned(
             left: 24,
             right: 24,
             bottom:
-                24, // Ubah dari top ke bottom untuk penempatan yang lebih baik
+                24,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'RAGDANews',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: AppTextStyles.headline2Bold.copyWith(color: AppColors.neutral1.color),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Please log into your account',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: AppTextStyles.headline7Regular.copyWith(color: AppColors.neutral1.color)
                 ),
               ],
             ),

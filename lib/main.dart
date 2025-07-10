@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
      return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'RAGDAnews',
-      theme: AppTheme.lightTheme,
       routerConfig: AppRouter.shared.router,
     );
   }

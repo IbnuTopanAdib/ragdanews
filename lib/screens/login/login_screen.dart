@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ragdanews/widgets/login/header_login.dart';
+import 'package:ragdanews/widgets/login/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,14 +13,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool get isFormValid =>
-      emailController.text.isNotEmpty && passwordController.text.isNotEmpty;
+  final String _dummyEmail = 'test@example.com';
+  final String _dummyPassword = 'password123';
+
+  String? _emailErrorText;
+  String? _passwordErrorText;
 
   @override
   void initState() {
     super.initState();
-    emailController.addListener(() => setState(() {}));
-    passwordController.addListener(() => setState(() {}));
+    emailController.addListener(_validateForm);
+    passwordController.addListener(_validateForm);
   }
 
   @override
@@ -29,72 +33,61 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  void _validateForm() {
+    setState(() {
+      _emailErrorText = null;
+      _passwordErrorText = null;
+
+      if (emailController.text.isEmpty) {
+        _emailErrorText = 'Email tidak boleh kosong';
+      }
+
+      if (passwordController.text.isEmpty) {
+        _passwordErrorText = 'Password tidak boleh kosong';
+      } else if (passwordController.text.length < 8) {
+        _passwordErrorText = 'Password minimal 8 karakter';
+      }
+    });
+  }
+
+  void _login() {
+    _validateForm();
+
+    if (_emailErrorText == null && _passwordErrorText == null) {
+      if (emailController.text == _dummyEmail &&
+          passwordController.text == _dummyPassword) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Login Berhasil!')),
+        );
+        print('Login Berhasil!');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Email atau password salah.')),
+        );
+        setState(() {
+          _passwordErrorText = 'Email atau password salah.';
+        });
+        print('Email atau password salah.');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          // Header Blue with Logo and Subtitle
-          HeaderLogin(),
-
-          // Form
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Email'),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    hintText: 'Cth. contoh@gmail.com',
-                    prefixIcon: Icon(Icons.person),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Text('Password'),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Enter password',
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.visibility),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: ElevatedButton(
-                    onPressed: isFormValid
-                        ? () {
-                            // TODO: Handle login
-                            print('Login clicked');
-                          }
-                        : null,
-
-                    child: const Text('Enter'),
-                  ),
-                ),
-              ],
-            ),
+          const HeaderLogin(),
+          LoginForm(
+            emailController: emailController,
+            passwordController: passwordController,
+            emailErrorText: _emailErrorText,
+            passwordErrorText: _passwordErrorText,
+            onLogin: _login,
+            isLoginEnabled: _emailErrorText == null &&
+                _passwordErrorText == null &&
+                emailController.text.isNotEmpty &&
+                passwordController.text.isNotEmpty,
           ),
         ],
       ),
