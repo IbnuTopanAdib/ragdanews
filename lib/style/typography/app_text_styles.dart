@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ragdanews/style/colors/app_colors.dart';
 
 class AppTextStyles {
   static TextStyle _withFont({
@@ -11,8 +12,9 @@ class AppTextStyles {
     return GoogleFonts.inter(
       fontSize: fontSize,
       fontWeight: fontWeight,
-      height: height / fontSize, // Convert pt line-height to Flutter height multiplier
+      height: height / fontSize,
       letterSpacing: letterSpacing,
+      color: AppColors.neutral500.color,
     );
   }
 
@@ -187,6 +189,12 @@ class AppTextStyles {
 
   static TextStyle headline8Regular = _withFont(
     fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 16,
+    letterSpacing: 0,
+  );
+  static TextStyle headline9Regular = _withFont(
+    fontSize: 10,
     fontWeight: FontWeight.w400,
     height: 16,
     letterSpacing: 0,

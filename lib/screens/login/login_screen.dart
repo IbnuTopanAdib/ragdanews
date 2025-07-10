@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ragdanews/router/router_names.dart';
 import 'package:ragdanews/widgets/login/header_login.dart';
 import 'package:ragdanews/widgets/login/login_form.dart';
 
@@ -59,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login Berhasil!')),
         );
-        print('Login Berhasil!');
+        context.goNamed(RouterName.mainScreen); // Navigate to main screen
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Email atau password salah.')),
