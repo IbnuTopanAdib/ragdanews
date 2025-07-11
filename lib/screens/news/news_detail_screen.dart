@@ -27,7 +27,6 @@ class NewsDetailScreen extends StatelessWidget {
           child: Image.asset('assets/icons/arrow_back.png'),
           onTap: () => context.pop(),
         ),
-        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
@@ -43,9 +42,7 @@ class NewsDetailScreen extends StatelessWidget {
             children: [
               Text(
                 '${news.sourceName} | $date',
-                style: AppTextStyles.headline8Regular.copyWith(
-                  color: AppColors.neutral500.color,
-                ),
+                style: AppTextStyles.headline8Regular,
               ),
               const SizedBox(height: 8),
               Text(news.title, style: AppTextStyles.headline4SemiBold),
@@ -156,7 +153,6 @@ class NewsDetailScreen extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 20,
-            backgroundColor: AppColors.neutral300.color,
             child: Image.asset(
               'assets/icons/person.png',
               width: 24,

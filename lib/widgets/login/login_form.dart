@@ -27,28 +27,30 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          EmailInput(controller: emailController, errorText: emailErrorText),
-          const SizedBox(height: 16),
-          PasswordInput(
-            controller: passwordController,
-            errorText: passwordErrorText,
-          ),
-          const SizedBox(height: 8),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              'Forgot Password?',
-              style: AppTextStyles.headline8Regular.copyWith(
-                color: AppColors.red400.color,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            EmailInput(controller: emailController, errorText: emailErrorText),
+            const SizedBox(height: 16),
+            PasswordInput(
+              controller: passwordController,
+              errorText: passwordErrorText,
+            ),
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'Forgot Password?',
+                style: AppTextStyles.headline8Regular.copyWith(
+                  color: AppColors.red400.color,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 24),
-          LoginButton(onPressed: isLoginEnabled ? onLogin : null),
-        ],
+            const SizedBox(height: 24),
+            LoginButton(onPressed: isLoginEnabled ? onLogin : null),
+          ],
+        ),
       ),
     );
   }

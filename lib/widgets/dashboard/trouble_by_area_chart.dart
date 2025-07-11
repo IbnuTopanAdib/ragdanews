@@ -34,7 +34,7 @@ class TroubleByAreaChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.all(8),
       child: Padding(
@@ -46,7 +46,7 @@ class TroubleByAreaChart extends StatelessWidget {
 
             const SizedBox(height: 16),
             SizedBox(
-              height: 250,
+              height: 300,
               child: Column(
                 children: [
                   Expanded(
@@ -156,9 +156,9 @@ class TroubleByAreaChart extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  Expanded(
-                    flex: 1,
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    height: 80,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: _buildLegend(),

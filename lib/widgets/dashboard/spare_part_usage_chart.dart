@@ -20,10 +20,7 @@ class SparePartUsageChart extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Spare Part Usage',
-                  style: AppTextStyles.headline7SemiBold,
-                ),
+                Text('Spare Part', style: AppTextStyles.headline7SemiBold),
                 Row(
                   children: [
                     TextButton(
@@ -49,7 +46,7 @@ class SparePartUsageChart extends StatelessWidget {
                   value: 'Alloy Casting',
                   onChanged: (String? value) {},
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 8),
                 CustomDropdown(
                   items: ['2024', '2025'],
                   value: '2024',

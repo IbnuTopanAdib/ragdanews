@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
             child: HeaderProfile(),
           ),
           Positioned(
-            top: 197,
+            top: 220,
             left: 0,
             right: 0,
             bottom: 0,
@@ -45,11 +45,11 @@ class ProfileScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       ..._buildProfileOptions([
                         {
-                          'icon': 'assets/icons/person.png',
+                          'icon': 'assets/icons/person_p.png',
                           'text': 'Personal Information',
                         },
                         {
-                          'icon': 'assets/icons/lock.png',
+                          'icon': 'assets/icons/lock_p.png',
                           'text': 'Password & Security',
                         },
                         {
@@ -108,9 +108,7 @@ class ProfileScreen extends StatelessWidget {
             child: _buildProfileOption(
               iconPath: option['icon'],
               text: option['text'],
-              onTap: () {
-                // Handle tap for other profile options if needed
-              },
+              onTap: () {},
             ),
           ),
         )

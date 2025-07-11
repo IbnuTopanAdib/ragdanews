@@ -22,10 +22,7 @@ class CustomDropdown extends StatelessWidget {
             .map(
               (e) => DropdownMenuItem(
                 value: e,
-                child: Text(
-                  e,
-                  style: const TextStyle(fontSize: 14),
-                ),
+                child: Text(e, style: const TextStyle(fontSize: 11)),
               ),
             )
             .toList(),
@@ -40,9 +37,7 @@ class CustomDropdown extends StatelessWidget {
           ),
         ),
         dropdownStyleData: DropdownStyleData(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
         ),
       ),
     );

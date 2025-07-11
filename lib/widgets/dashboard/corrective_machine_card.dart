@@ -22,7 +22,7 @@ class CorrectiveMachineCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Corrective Maintenance (Machine)',
+                  'Corrective Machine',
                   style: AppTextStyles.headline7SemiBold,
                 ),
                 Row(

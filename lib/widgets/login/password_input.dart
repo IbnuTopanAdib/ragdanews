@@ -26,6 +26,7 @@ class PasswordInput extends StatelessWidget {
             color: AppColors.neutral6.color,
           ),
           decoration: InputDecoration(
+            focusColor: AppColors.naplesBlue500.color,
             hintText: 'Enter password',
             hintStyle: AppTextStyles.headline7Regular.copyWith(
               color: AppColors.neutral6.color,
@@ -42,10 +43,7 @@ class PasswordInput extends StatelessWidget {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: AppColors.grey100.color,
-                width: 1,
-              ),
+              borderSide: BorderSide(color: AppColors.grey100.color, width: 1),
             ),
             errorText: errorText,
           ),

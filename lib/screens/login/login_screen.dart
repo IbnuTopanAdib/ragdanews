@@ -70,22 +70,24 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const HeaderLogin(),
-          LoginForm(
-            emailController: emailController,
-            passwordController: passwordController,
-            emailErrorText: _emailErrorText,
-            passwordErrorText: _passwordErrorText,
-            onLogin: _login,
-            isLoginEnabled:
-                _emailErrorText == null &&
-                _passwordErrorText == null &&
-                emailController.text.isNotEmpty &&
-                passwordController.text.isNotEmpty,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const HeaderLogin(),
+            LoginForm(
+              emailController: emailController,
+              passwordController: passwordController,
+              emailErrorText: _emailErrorText,
+              passwordErrorText: _passwordErrorText,
+              onLogin: _login,
+              isLoginEnabled:
+                  _emailErrorText == null &&
+                  _passwordErrorText == null &&
+                  emailController.text.isNotEmpty &&
+                  passwordController.text.isNotEmpty,
+            ),
+          ],
+        ),
       ),
     );
   }

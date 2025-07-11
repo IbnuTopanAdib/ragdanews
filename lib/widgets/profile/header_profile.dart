@@ -28,7 +28,7 @@ class HeaderProfile extends StatelessWidget {
         Positioned(
           left: 24,
           right: 24,
-          bottom: 90,
+          top: 50,
 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
