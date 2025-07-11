@@ -23,11 +23,12 @@ class NewsDetailScreen extends StatelessWidget {
             color: AppColors.neutral1.color,
           ),
         ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+        leading: InkWell(
+          child: Image.asset('assets/icons/arrow_back.png'),
+          onTap: () => context.pop(),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

@@ -21,7 +21,7 @@ class NewsCard extends StatelessWidget {
 
     return Card(
       clipBehavior: Clip.antiAlias,
-      elevation: 1,
+      elevation: 0.2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

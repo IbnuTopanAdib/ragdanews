@@ -30,26 +30,4 @@ class NewsListProvider extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  Future<void> searchNews(String query) async {
-    if (query.isEmpty) {
-      return fetchTopHeadlines();
-    }
-
-    _state = NewsListLoadingState();
-    notifyListeners();
-
-    try {
-      final response = await _apiServices.fetchEverything(query);
-      _state = NewsListLoadedState(response.articles);
-    } on SocketException {
-      _state = NewsListErrorState("Tidak dapat terhubung ke internet. Periksa koneksi Anda.");
-    } on TimeoutException {
-      _state = NewsListErrorState("Waktu koneksi habis. Silakan coba lagi.");
-    } catch (e) {
-      _state = NewsListErrorState("Terjadi kesalahan saat mencari berita.");
-    }
-
-    notifyListeners();
-  }
 }
