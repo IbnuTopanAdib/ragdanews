@@ -58,18 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_emailErrorText == null && _passwordErrorText == null) {
       if (emailController.text == _dummyEmail &&
           passwordController.text == _dummyPassword) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login Berhasil!')),
-        );
         context.goNamed(RouterName.mainScreen); // Navigate to main screen
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Email atau password salah.')),
-        );
         setState(() {
           _passwordErrorText = 'Email atau password salah.';
         });
-        print('Email atau password salah.');
       }
     }
   }
@@ -86,7 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
             emailErrorText: _emailErrorText,
             passwordErrorText: _passwordErrorText,
             onLogin: _login,
-            isLoginEnabled: _emailErrorText == null &&
+            isLoginEnabled:
+                _emailErrorText == null &&
                 _passwordErrorText == null &&
                 emailController.text.isNotEmpty &&
                 passwordController.text.isNotEmpty,
